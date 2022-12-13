@@ -1,0 +1,59 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div id="content">
+                <div class="container-fluid">
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"><a href='/developer/{{object.general.brand.id}}'>Застройщик: {{object.general.brand.name}}</a> <a href='/developer/object/{{object.general.id}}'>Объект: {{object.general.name}}</a> {{object.name}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">
+                                                Название
+                                            </th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">
+                                                Комнатность
+                                            </th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">
+                                                Площадь
+                                            </th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">
+                                                Стоимость (мл. руб.)
+                                            </th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">
+                                                Количество
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr><th rowspan="1" colspan="1">Название</th><th rowspan="1" colspan="1">Комнатность</th><th rowspan="1" colspan="1">Площадь</th><th rowspan="1" colspan="1">Стоимость (мл. руб.)</th><th rowspan="1" colspan="1">Количество</th>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for item in apartments %}
+                                        <tr class="odd">
+                                            <td>{{ item.name }}</td>
+                                            <td>{{ item.get_rooms_display }}</td>
+                                            <td>{{ item.min_square }}-{{ item.max_square }}</td>
+                                            <td>{{ item.min_cost }}-{{ item.max_cost }}</td>
+                                            <td>{{ item.count }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+{% endblock %}

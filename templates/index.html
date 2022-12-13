@@ -1,0 +1,67 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div id="content">
+                <div class="container-fluid">
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Застройщики</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div>
+                                        <form method=POST>
+                                        {% csrf_token %}
+                                        {{ form.as_table }}
+                                        <input type="submit" value="Поиск">
+                                        </form>
+                                </div>
+                                    <div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    
+                                    <thead>
+                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Застройщик</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Адрес</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Номер телефона</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Сайт</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Объектов</th></tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr><th rowspan="1" colspan="1">Застройщик</th><th rowspan="1" colspan="1">Адрес</th><th rowspan="1" colspan="1">Номер телефона</th><th rowspan="1" colspan="1">Сайт</th><th rowspan="1" colspan="1">Объектов</th></tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for item in page_obj.object_list %}
+                                        <tr class="odd">
+                                            <td><a href='/developer/{{item.developer.id}}'>{{ item.developer.name }}</a></td>
+                                            <td>{{ item.developer.address }}</td>
+                                            <td>{{ item.developer.phone }}</td>
+                                            <td><a href='http://{{ item.developer.website }}'>{{ item.developer.website }}</a></td>
+                                            <td>{{ item.obj_count }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if page_obj.has_previous %}
+                                        <a href="?page=1">&laquo; первая</a>
+                                        <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+                                    {% endif %}
+                            
+                                    <span class="current">
+                                            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                                    </span>
+                            
+                                    {% if page_obj.has_next %}
+                                        <a href="?page={{ page_obj.next_page_number }}">вперёд</a>
+                                        <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+                                    {% endif %}
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+{% endblock %}

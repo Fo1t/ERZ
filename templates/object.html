@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div id="content">
+                <div class="container-fluid">
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"><a href='/developer/{{general.brand.id}}'>Застройщик: {{general.brand.name}}</a> Объект: {{general.name}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    
+                                    <thead>
+                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Название</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 216.125px;">Статус</th></tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr><th rowspan="1" colspan="1">Название</th><th rowspan="1" colspan="1">Статус</th>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for item in objects %}
+                                        <tr class="odd">
+                                            <td><a href='./apartment/{{item.id}}'>{{ item.name }}</a></td>
+                                            <td>{{ item.state }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+{% endblock %}
