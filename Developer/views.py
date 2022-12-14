@@ -139,26 +139,3 @@ def ApargPage(request, object_id):
         data['object'] = object
         data['apartments'] = Apartment.objects.filter(object=object)
     return render(request, 'apartment.html', data)
-
-
-    # for dev in tqdm(Developer.objects.all()):
-    #     if General.objects.filter(brand=dev).exists():
-    #         for general in General.objects.filter(brand=dev):
-    #             if Object.objects.filter(general=general).exists():
-    #                 for obj in Object.objects.filter(general=general):
-    #                     if Apartment.objects.filter(object=obj).exists():
-    #                         pass
-    #                     else:
-    #                         obj.delete()
-    # for dev in tqdm(Developer.objects.all()):
-    #     if General.objects.filter(brand=dev).exists():
-    #         for general in General.objects.filter(brand=dev):
-    #             if Object.objects.filter(general=general).exists():
-    #                 pass
-    #             else:
-    #                 general.delete()
-    # for dev in tqdm(Developer.objects.all()):
-    #     if General.objects.filter(brand=dev).exists():
-    #         pass
-    #     else:
-    #         dev.delete() 
